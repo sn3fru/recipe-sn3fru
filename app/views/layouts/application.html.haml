@@ -9,6 +9,7 @@
 %body
 	%nav.navbar.navbar-default
 		.container
+		.container
 			.navbar-brand= link_to "Recipe Box", root_path
 
 			- if user_signed_in?
@@ -25,6 +26,7 @@
 			= content_tag :div, msg, class: "alert"
 
 		= yield
+		
 %footer
 	%p Copyright &copy; #{Time.now.year} MarcosSilva.
 
