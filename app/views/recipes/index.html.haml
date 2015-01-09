@@ -1,9 +1,19 @@
-- @recipe.each_slice(3) do |recipes|
+.jumbotron
+	%h1 Aqui Voce é o MasterChef
+	%p Poste suas Receitas e Ganhe Premios !!
+	%p
+		%a.btn.btn-primary.btn-lg{:href => new_recipe_path , :role => "Postar"} Poste Sua Receita !
+
+
+- @recipe.each_slice(6) do |recipes|
 	.row
 		- recipes.each do |recipe|
-			.col-md-3.col-sm-6
+			.col-sm-6.col-md-4
 				.recipe
 					.image_wrapper
 						= link_to recipe do
 							= image_tag recipe.image.url(:medium)
 					%h2= link_to recipe.title, recipe
+					%a.btn.btn-primary{:href => "#" , :role => "button"} Ver Mais
+					%a.btn.btn-primary{:href => "#", :role => "button"} Curtir
+					%a.btn.btn-default{:href => "#", :role => "button"} Compartilhar
