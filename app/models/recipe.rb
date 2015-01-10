@@ -15,7 +15,7 @@ class Recipe < ActiveRecord::Base
 
   validates :title, :description, :image, presence: true
 
-	has_attached_file :image, styles: { :medium => "200x200#" }
+	has_attached_file :image, styles: { :medium => "300x300#", :MediumIndex => "200x200#>", :thumb => "100x100#>"  }
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	acts_as_likeable	

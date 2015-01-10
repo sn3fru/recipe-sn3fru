@@ -9,14 +9,13 @@
 				%h1= @recipe.title
 									
 				%p.description= @recipe.description
-				%p  
-					
-					
-					Submitted by
-					= @recipe.user.email
-					.p
-						%em= "#{@reviews.length} reviews"
-						<div class="star-rating" data-score= #{@avg_review} >
+				%p
+					.ratingshow 
+						%p Submitted by #{@recipe.user.email}
+						%p
+							%em= "#{@reviews.length} reviews"
+							<div class="star-rating" data-score= #{@avg_review} >
+
 
 	.row
 		.col-md-6
@@ -25,7 +24,6 @@
 				%ul
 					- @recipe.ingredients.each do |ingredient|
 						%li= ingredient.name
-
 		.col-md-6
 			#directions
 				%h2 Directions
@@ -34,7 +32,7 @@
 						%li= direction.step
 
 	.row
-		.col-md-7
+		.col-md-10
 			.h1.review_title
 				- if @reviews.blank?
 					.p

@@ -131,7 +131,6 @@ ActiveRecord::Schema.define(version: 20150110131922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "movie_id"
     t.integer  "recipe_id"
   end
 

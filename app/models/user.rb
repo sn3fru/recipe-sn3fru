@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
   acts_as_liker
   acts_as_mentionable
 
+  acts_as_messageable
+
 end

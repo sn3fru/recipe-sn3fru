@@ -1,0 +1,106 @@
+.container
+  .row
+    .col-sm-3.col-md-3
+      #accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                %span.glyphicon.glyphicon-folder-close>
+                Content
+          #collapseOne.panel-collapse.collapse.in
+            .panel-body
+              %table.table
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-pencil.text-primary
+                    %a{:href => "http://www.jquery2dotnet.com"} Articles
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-flash.text-success
+                    %a{:href => "http://www.jquery2dotnet.com"} News
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-file.text-info
+                    %a{:href => "http://www.jquery2dotnet.com"} Newsletters
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-comment.text-success
+                    %a{:href => "http://www.jquery2dotnet.com"} Comments
+                    %span.badge 42
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                %span.glyphicon.glyphicon-th>
+                Modules
+          #collapseTwo.panel-collapse.collapse
+            .panel-body
+              %table.table
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Orders
+                    %span.label.label-success $ 320
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Invoices
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Shipments
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Tex
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                %span.glyphicon.glyphicon-user>
+                Account
+          #collapseThree.panel-collapse.collapse
+            .panel-body
+              %table.table
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Change Password
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Notifications
+                    %span.label.label-info 5
+                %tr
+                  %td
+                    %a{:href => "http://www.jquery2dotnet.com"} Import/Export
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-trash.text-danger
+                    %a.text-danger{:href => "http://www.jquery2dotnet.com"}
+                      Delete Account
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseFour"}
+                %span.glyphicon.glyphicon-file>
+                Reports
+          #collapseFour.panel-collapse.collapse
+            .panel-body
+              %table.table
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-usd
+                    %a{:href => "http://www.jquery2dotnet.com"} Sales
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-user
+                    %a{:href => "http://www.jquery2dotnet.com"} Customers
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-tasks
+                    %a{:href => "http://www.jquery2dotnet.com"} Products
+                %tr
+                  %td
+                    %span.glyphicon.glyphicon-shopping-cart
+                    %a{:href => "http://www.jquery2dotnet.com"} Shopping Cart
+    .col-sm-9.col-md-9
+      .well
+        %h1
+          Accordion Menu With Icon
+        

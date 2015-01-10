@@ -25,8 +25,17 @@
 
 $red: #DB6161;
 
+p {
+	margin: 0px 0px 2px;
+}
+
 body {
 	background: #DCDCDC;
+}
+
+.search {
+    position:relative;
+    width:325px;	
 }
 
 .main_content {
@@ -75,7 +84,7 @@ body {
 	  -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
 		&:hover {
-			transform: scale(1.075);
+			transform: scale(1.275);
 		}
 	}
 	h2 {
@@ -94,17 +103,29 @@ body {
 	margin-bottom: 50px;
 }
 
-#recipe_info, #ingredients, #directions {
+#recipe_info  {
 	background: white;
 	@include box-shadow;
-	min-height: 360px;
-	border-radius: 5px;
-	padding: 2em 8%;
+	min-height: 300px;
+	border-radius: 25px;
+	padding: 1em 5%;
 }
+
+#ingredients, #directions {
+
+	background: white;
+	@include box-shadow;
+	min-height: 300px;
+	border-radius: 25px;
+	padding: 1em 15%;
+	position: relative;
+	top: 15px;
+}
+
 
 .recipe_image {
 	max-width: 100%;
-	border-radius: 5px;
+	border-radius: 25px;
 	@include box-shadow;
 }
 
@@ -119,6 +140,15 @@ body {
 		font-size: 20px;
 	}
 }
+
+.ratingshow { 
+	position: relative;
+	top: 120px;
+	margin: 0px 0px 2px;
+}
+
+
+.classWithPad { margin:10px; padding:10px; }
 
 #ingredients, #directions {
 	margin-bottom: 50px;
