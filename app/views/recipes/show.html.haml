@@ -2,13 +2,21 @@
 	#recipe_top.row
 		.col-md-4
 			= image_tag @recipe.image.url(:medium), class: "recipe_image"
+
+
 		.col-md-8
 			#recipe_info
 				%h1= @recipe.title
+									
 				%p.description= @recipe.description
-				%p
+				%p  
+					
+					
 					Submitted by
 					= @recipe.user.email
+					.p
+						%em= "#{@reviews.length} reviews"
+						<div class="star-rating" data-score= #{@avg_review} >
 
 	.row
 		.col-md-6
@@ -26,8 +34,37 @@
 						%li= direction.step
 
 	.row
+		.col-md-7
+			.h1.review_title
+				- if @reviews.blank?
+					.p
+						.h3 ainda nao há analises
+					= link_to "Faca a primeira Analise", new_recipe_review_path(@recipe), class: "btn btn-danger"
+				- else
+					.p.p
+						= link_to "escreva uma analise", new_recipe_review_path(@recipe), class: "btn btn-danger"
+					- @reviews.each do |review|
+						.h3.reviews
+							.p
+								=review.comment
+							.p
+								<div class="star-rating" data-score= #{review.rating} >
+
+
+	.tr.row
 		.col-md-12
 			= link_to "Back", root_path, class: "btn btn-default"
+
 			- if user_signed_in?
 				= link_to "Edit", edit_recipe_path, class: "btn btn-default"
 				= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
+
+
+:javascript
+	$('.star-rating').raty({
+		path: '/assets',
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+			}
+	});

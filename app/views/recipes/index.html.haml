@@ -4,8 +4,7 @@
 	%p
 		%a.btn.btn-primary.btn-lg{:href => new_recipe_path , :role => "Postar"} Poste Sua Receita !
 
-
-- @recipe.each_slice(6) do |recipes|
+- @recipe.each_slice(3) do |recipes|
 	.row
 		- recipes.each do |recipe|
 			.col-sm-6.col-md-4
@@ -16,4 +15,14 @@
 					%h2= link_to recipe.title, recipe
 					%a.btn.btn-primary{:href => "#" , :role => "button"} Ver Mais
 					%a.btn.btn-primary{:href => "#", :role => "button"} Curtir
-					%a.btn.btn-default{:href => "#", :role => "button"} Compartilhar
+					%a.btn.btn-default{:href => "#", :role => "button"} Compartilhar			
+
+:javascript
+	$('.star-rating').raty({
+		path: '/assets',
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+			}
+	});
+
