@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :recipes
   has_many :reviews
+
+  acts_as_follower
+  acts_as_followable
+
+  acts_as_liker
+  acts_as_mentionable
+
 end
