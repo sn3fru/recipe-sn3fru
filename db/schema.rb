@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109181733) do
+ActiveRecord::Schema.define(version: 20150110021328) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150109181733) do
 
   add_index "directions", ["recipe_id"], name: "index_directions_on_recipe_id"
 
+  create_table "follows", force: true do |t|
+    t.string   "follower_type"
+    t.integer  "follower_id"
+    t.string   "followable_type"
+    t.integer  "followable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
   create_table "ingredients", force: true do |t|
     t.string   "name"
     t.integer  "recipe_id"
@@ -37,6 +48,28 @@ ActiveRecord::Schema.define(version: 20150109181733) do
   end
 
   add_index "ingredients", ["recipe_id"], name: "index_ingredients_on_recipe_id"
+
+  create_table "likes", force: true do |t|
+    t.string   "liker_type"
+    t.integer  "liker_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], name: "fk_likeables"
+  add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
+
+  create_table "mentions", force: true do |t|
+    t.string   "mentioner_type"
+    t.integer  "mentioner_id"
+    t.string   "mentionable_type"
+    t.integer  "mentionable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
+  add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -75,6 +108,7 @@ ActiveRecord::Schema.define(version: 20150109181733) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

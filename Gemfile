@@ -19,6 +19,7 @@ gem 'spring',        group: :development
 gem 'searchkick', '~> 0.8.3'
 gem 'spring',        group: :development
 gem 'twitter-bootstrap-rails'
+gem "socialization"
 
 
 group :development, :test do
