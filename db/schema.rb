@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110131922) do
+ActiveRecord::Schema.define(version: 20150110221603) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20150110131922) do
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
 
+  create_table "profiles", force: true do |t|
+    t.string   "Name"
+    t.date     "Birthiday"
+    t.string   "Occupation"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "receipts", force: true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
@@ -134,6 +145,13 @@ ActiveRecord::Schema.define(version: 20150110131922) do
     t.integer  "recipe_id"
   end
 
+  create_table "tree_recipes", force: true do |t|
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ancestry"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -148,9 +166,13 @@ ActiveRecord::Schema.define(version: 20150110131922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "profile_id"
+    t.integer  "TreeRecipe_id"
   end
 
+  add_index "users", ["TreeRecipe_id"], name: "index_users_on_TreeRecipe_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["profile_id"], name: "index_users_on_profile_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

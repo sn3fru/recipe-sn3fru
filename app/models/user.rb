@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :recipes
   has_many :reviews
+  has_one  :profile
 
   acts_as_follower
   acts_as_followable

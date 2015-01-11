@@ -1,0 +1,16 @@
+
+
+%h1 Categorias e Receitas
+
+
+
+.row
+	- @categories.each_slice(4) do |cs|
+		- cs.each do |c|
+			.col-md-4.col-sm-8
+				.categories
+					.image_wrapper
+						.thumbail
+							%li.h2= c.title
+							- c.recipes.each do |r|
+								%ol.li.h4= r.title

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 	
+  resources :profiles
+
+  resources :tree_recipes
+
+  resources :categories
+
 	devise_for :users
 	
 	resources :recipes do

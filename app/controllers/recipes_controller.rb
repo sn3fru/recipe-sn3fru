@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show]
+	before_action :set_categories, only: [:create, :edit]
 
 	def index
 		@recipe = Recipe.all.order("created_at DESC")
@@ -15,7 +16,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@reviews = Review.where(recipe_id: @recipe.id).order("created_at DESC")
-
+		
 		if @reviews.blank?
 			@avg_review = 0
 		else
@@ -54,6 +55,11 @@ class RecipesController < ApplicationController
 		redirect_to root_path, notice: "Successfully deleted recipe"
 	end
 
+
+	def set_categories
+		@categories = Category.all
+	end
+
 	private
 
 	def recipe_params
@@ -63,4 +69,7 @@ class RecipesController < ApplicationController
 	def find_recipe
 		@recipe = Recipe.find(params[:id])
 	end
+
+
+
 end

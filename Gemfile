@@ -22,6 +22,10 @@ gem 'twitter-bootstrap-rails'
 gem 'socialization'
 gem 'public_activity'
 gem 'mailboxer'
+gem 'omniauth-facebook'
+gem 'fb_graph'
+gem 'nifty-generators'
+gem 'ancestry'
 
 
 group :development, :test do

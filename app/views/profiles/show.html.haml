@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @profile.Name
+%p
+  %strong Birthiday:
+  = @profile.Birthiday
+%p
+  %strong Occupation:
+  = @profile.Occupation
+%p
+  %strong User:
+  = @profile.user
+= link_to 'Edit', edit_profile_path(@profile)
+= link_to 'Edit', edit_profile_path(@profile)
+= link_to 'Back', profiles_path

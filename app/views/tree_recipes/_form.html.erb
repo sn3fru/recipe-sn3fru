@@ -1,0 +1,21 @@
+<%= form_for(@tree_recipe) do |f| %>
+  <% if @tree_recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tree_recipe.errors.count, "error") %> prohibited this tree_recipe from being saved:</h2>
+
+      <ul>
+      <% @tree_recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

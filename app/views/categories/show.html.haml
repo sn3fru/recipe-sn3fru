@@ -1,13 +1,10 @@
-.jumbotron
-	%h1 Aqui Voce é o MasterChef
-	%p Poste suas Receitas e Ganhe Premios !!
-	%p
-		%a.btn.btn-primary.btn-lg{:href => new_recipe_path , :role => "Postar"} Poste Sua Receita !
+%p#notice= notice
 
-
+%h1
+	= @category.title
 
 .row
-	- @recipe.each_slice(3) do |recipes|
+	- @category.recipes.each_slice(3) do |recipes|
 		- recipes.each do |recipe|
 			.col-sm-6.col-md-3
 				.recipe
@@ -15,19 +12,9 @@
 						.thumbail
 							= link_to recipe do
 								= image_tag recipe.image.url(:Medium)
-						= recipe.category.title
 						%h2= link_to recipe.title, recipe
 						
 						%a.btn.btn-primary{:href => "#" , :role => "button"} Ver Mais
 						%a.btn.btn-primary{:href => "#", :role => "button"} Curtir
 						%a.btn.btn-default{:href => "#", :role => "button"} Compartilhar
 
-
-:javascript
-	$('.star-rating').raty({
-		path: '/assets',
-		readOnly: true,
-		score: function() {
-			return $(this).attr('data-score');
-			}
-	});

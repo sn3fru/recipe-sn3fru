@@ -1,0 +1,47 @@
+%nav.sidebar{:class => "(light)"}
+  %ul
+    %li.title Items Group 1
+    %li.active
+      %a{:href => "#"}
+        %i.icon-home>
+        Dashboard
+    %li.stick.bg-red
+      %a{:href => "#"}
+        %i.icon-cog>
+        Layouts
+    %li.stick.bg-yellow
+      %a.dropdown-toggle{:href => "#"}
+        %i.icon-tree-view>
+        Sub menu
+      %ul.dropdown-menu{"data-role" => "dropdown"}
+        %li
+          %a{:href => ""} Subitem 1
+        %li
+          %a{:href => ""} Subitem 2
+        %li
+          %a{:href => ""} Subitem 3
+        %li.divider
+        %li
+          %a{:href => ""} Subitem 4
+        %li.disabled
+          %a{:href => ""} Subitem 4
+    %li.stick.bg-green
+      %a{:href => "#"} Thread item
+    %li.disabled
+      %a{:href => "#"} Disabled item
+    %li.title Items Group 2
+    %li
+      %a{:href => "#"} Other Item 1
+    %li
+      %a{:href => "#"} Other item 2
+    %li
+      %a{:href => "#"} Other item 3
+    %li
+      %a.dropdown-toggle{:href => "#"} Sub menu 2
+      %ul.dropdown-menu{"data-role" => "dropdown"}
+        %li
+          %a{:href => ""} Subitem 1
+        %li
+          %a{:href => ""} Subitem 2
+        %li
+          %a{:href => ""} Subitem 3

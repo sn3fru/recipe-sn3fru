@@ -1,0 +1,11 @@
+
+
+%h1 Categorias e Receitas
+
+.row
+	- @categories.each do |c|
+		.a
+			%h2 = c.title
+			- c.recipes.each do |r|
+			%h4= r.title
+			
