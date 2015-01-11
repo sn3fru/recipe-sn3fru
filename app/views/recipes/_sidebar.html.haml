@@ -1,0 +1,101 @@
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "UTF-8"}
+      %title Matt's Code
+      %link{:href => "http://mattscode.io/assets/dist/css/bootstrap.min.css", :rel => "stylesheet"}
+        %link{:href => "http://mattscode.io/assets/css/animate.css", :rel => "stylesheet"}
+          %link{:href => "http://fonts.googleapis.com/css?family=Exo+2:300", :rel => "stylesheet", :type => "text/css"}
+            %link{:href => "http://mattscode.io/assets/css/master.css", :rel => "stylesheet"}
+  %body
+    .loading
+      %p{:align => "center"}
+        %img{:alt => "Loading...", :src => "http://mattscode.io/assets/img/beaker.png", :style => "width:150px;"}
+      .progress.progress-striped.active{:style => "width:140px;margin:0 auto;height:10px;border-radius:0;"}
+        .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "width: 100%"}
+          %span.sr-only 45% Complete
+      %p{:align => "center", :style => "color:#999;"} loading...
+    .sidebar
+      .heightlock
+        %p.title Browse Projects
+        %ul
+          %li
+            %a{:href => "#"} About Me
+            %span.glyphicon.white.glyphicon-plus.right
+            %ul
+              %li
+                %a{"data-link" => "http://mattscode.io/profile.html", :href => "#"} Profile
+          %li
+            %a{:href => "#"} Websites
+            %span.glyphicon.white.glyphicon-plus.right
+            %ul
+              %li
+                %a{"data-link" => "http://acixs.com", :href => "#"} Acixs
+              %li
+                %a{"data-link" => "http://tinderlight.com", :href => "#"} Tinderlight
+              %li
+                %a{"data-link" => "http://12daysofindie.com", :href => "#"} 12 Days of Indie
+              %li
+                %a{"data-link" => "http://66.85.175.201/Multicraft/", :href => "#"} Multicraft
+          %li
+            %a{:href => "#"} Control Panels
+            %span.glyphicon.white.glyphicon-plus.right
+            %ul
+              %li
+                %a{"data-link" => "http://66.85.175.201/starmap/", :href => "#"} Starmap
+          %li
+            %a{:href => "#"} Web Projects
+            %span.glyphicon.white.glyphicon-plus.right
+            %ul
+              %li
+                %a{"data-link" => "http://66.85.175.201/3dButtons/", :href => "#"} 3D Buttons
+              %li
+                %a{"data-link" => "http://66.85.175.201/3DSwitch/", :href => "#"} 3D Switch
+              %li
+                %a{"data-link" => "http://66.85.175.201/acixs/", :href => "#"} New Acixs
+              %li
+                %a{"data-link" => "http://66.85.175.201/bcl/", :href => "#"} BCSS Lib
+              %li
+                %a{"data-link" => "http://66.85.175.201/LaunchButton/", :href => "#"} Launch Button
+              %li
+                %a{"data-link" => "http://66.85.175.201/rd_nav/matte", :href => "#"} RD Navigation
+          %li
+            %a{:href => "#"} Design
+            %span.glyphicon.white.glyphicon-plus.right
+            %ul
+              %li
+                %a{"data-link" => "http://ftbservers.com/uploads/banners/bec3ce8e-f4f2-4a35-b3b7-9a98993d4b2d.jpeg", :href => "#"} 8BitBlocks Banner
+        %br
+    .screenestate
+      %a.toggleSidebar{:href => "#"}
+        %span.glyphicon.glyphicon-list-alt
+      .window.draggable.scalable{"data-scaled" => "false", :onclick => "$(this).css('z-index', windowz);windowz++;"}
+        .menu
+          .onethird &nbsp;
+          .onethird.windowTitle
+            %span Project Browser
+          .onethird
+            %button.exit{:onclick => "$(this).closest('.window').fadeOut()"}
+              %span.glyphicon.glyphicon-remove
+            %button.full{:onclick => "fullscreen($(this))"}
+              %span.glyphicon.glyphicon-fullscreen
+        .url
+          %span.glyphicon.glyphicon-chevron-right{:disabled => "disabled", :style => "font-size:12pt;margin:5px 0 0 10px;"}>
+          \&nbsp;&nbsp;&nbsp;&nbsp;
+          %input.urlthingy{:type => "text"}
+            .progress.progress-striped.active.subloader
+              .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "45", :role => "progressbar", :style => "border-radius:0;"}
+                %span.sr-only 45% Complete
+        .moremenu
+          %ul
+            %li
+              %a.reload{:href => "#", :onclick => "$(this).closest('.window').find('.browserview').attr( 'src', function ( i, val ) { return val; });"} Reload
+            %li
+              %a.tab{:href => "#", :onclick => "window.open($(this).closest('.window').find('.browserview').attr( 'src'), '_blank');"} Open in tab
+            %li
+              %a.reload{:href => "#", :onclick => "$(this).closest('.window').find('.browserview').attr( 'src', function ( i, val ) { var newsource='view-source:'+val; return newsource; });"} Source
+            %li
+              %a{:href => "#"} About
+        %iframe.browserview{:frameborder => "0", :height => "100%", :onload => "loadstatus($(this));", :src => "http://www.acixs.com", :width => "100%"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"}
+    %script{:src => "assets/js/scripts.js"}

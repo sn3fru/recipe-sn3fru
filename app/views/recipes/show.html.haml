@@ -11,7 +11,7 @@
 				%p.description= @recipe.description
 				%p
 					.ratingshow 
-						%p Submitted by #{@recipe.user.email}
+						%p Submitted by #{@recipe.user.name}
 						%p
 							%em= "#{@reviews.length} reviews"
 							<div class="star-rating" data-score= #{@avg_review} >

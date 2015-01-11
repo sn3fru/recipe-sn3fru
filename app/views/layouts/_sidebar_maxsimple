@@ -1,0 +1,11 @@
+	%nav.sidebar{:class => "(light)"}
+		%ul
+			%li.title Items Group 1
+			%li.active
+				%a{:href => "#"}
+					%i.icon-home>
+					Dashboard
+			%li.stick.bg-red
+				%a{:href => "#"}
+					%i.icon-cog>
+					Layouts
