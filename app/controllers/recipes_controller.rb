@@ -60,6 +60,12 @@ class RecipesController < ApplicationController
 		@categories = Category.all
 	end
 
+
+	def follow
+    	user = User.find(params[:id])
+    	current_user.follow!(user) # => This assumes you have a variable current_user who is authenticated
+  	end
+
 	private
 
 	def recipe_params

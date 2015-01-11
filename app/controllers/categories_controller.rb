@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   # GET /categorys/1/edit
   def edit
   end
+  
 
   # POST /categorys
   # POST /categorys.json

@@ -26,6 +26,8 @@ gem 'omniauth-facebook'
 gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
+gem "better_errors", group: :development
+
 
 
 group :development, :test do

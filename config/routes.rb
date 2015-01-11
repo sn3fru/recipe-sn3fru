@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 	
+  get 'activities/index'
+
+  resources :posts
+
 	resources :profiles
 
 	resources :tree_recipes
