@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111174928) do
+ActiveRecord::Schema.define(version: 20150112172839) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20150111174928) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
@@ -212,6 +222,7 @@ ActiveRecord::Schema.define(version: 20150111174928) do
     t.string   "name"
     t.integer  "profile_id"
     t.integer  "TreeRecipe_id"
+    t.string   "avatar"
   end
 
   add_index "users", ["TreeRecipe_id"], name: "index_users_on_TreeRecipe_id"
