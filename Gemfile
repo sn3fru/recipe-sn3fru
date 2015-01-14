@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.1.5'
 gem 'sass-rails', '~> 4.0.3'
@@ -22,17 +23,16 @@ gem 'twitter-bootstrap-rails'
 gem 'socialization'
 gem 'public_activity'
 gem 'mailboxer'
-gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook', '2.0.0'
 gem 'fb_graph'
 gem 'nifty-generators'
 gem 'ancestry'
 gem "better_errors", group: :development
-gem 'omniauth'
-gem 'omniauth-facebook'
-
-
-
+gem 'byebug'
+gem 'bootstrap-social-rails', '~> 4.8.0'
+gem 'font-awesome-rails'
 
 group :development, :test do
-     gem 'sqlite3'
+  gem 'sqlite3'
 end
