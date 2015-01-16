@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150114015657) do
+ActiveRecord::Schema.define(version: 20150115145346) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -153,12 +152,12 @@ ActiveRecord::Schema.define(version: 20150114015657) do
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "profiles", force: true do |t|
-    t.string   "Name"
     t.date     "Birthiday"
-    t.string   "Occupation"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "occupation"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
@@ -223,14 +222,10 @@ ActiveRecord::Schema.define(version: 20150114015657) do
     t.string   "name"
     t.integer  "profile_id"
     t.integer  "TreeRecipe_id"
-<<<<<<< HEAD
-    t.string   "avatar"
-=======
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
->>>>>>> Add login with Facebook and Twitter
   end
 
   add_index "users", ["TreeRecipe_id"], name: "index_users_on_TreeRecipe_id"

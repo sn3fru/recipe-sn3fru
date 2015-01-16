@@ -259,7 +259,7 @@ DEPENDENCIES
   jquery-rails
   mailboxer
   nifty-generators
-  omniauth-facebook (= 2.0.0)
+  omniauth-facebook
   omniauth-twitter
   paperclip (~> 4.2.0)
   public_activity

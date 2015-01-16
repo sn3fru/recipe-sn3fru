@@ -4,19 +4,19 @@ class RecipesController < ApplicationController
 	before_action :set_categories, only: [:create, :edit]
 
 	def index
-		@recipe = Recipe.all.order("created_at DESC")
+		@recipes = Recipe.all.order("created_at DESC")
 
 		if @reviews.blank?
 			@avg_review = 0
 		else
 			@avg_review = @reviews.average(:rating).round(2)
-		end		
+		end
 
 	end
 
 	def show
 		@reviews = Review.where(recipe_id: @recipe.id).order("created_at DESC")
-		
+
 		if @reviews.blank?
 			@avg_review = 0
 		else
@@ -59,12 +59,6 @@ class RecipesController < ApplicationController
 	def set_categories
 		@categories = Category.all
 	end
-
-
-	def follow
-    	user = User.find(params[:id])
-    	current_user.follow!(user) # => This assumes you have a variable current_user who is authenticated
-  	end
 
 	private
 

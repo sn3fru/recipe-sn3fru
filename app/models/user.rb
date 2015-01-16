@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   # Prepare mailboxer for user
   acts_as_messageable
 
+  after_create :create_profile
 
   devise :database_authenticatable,
          :registerable,
@@ -43,7 +44,6 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   acts_as_liker
-  acts_as_likeable
   acts_as_mentionable
 
 
@@ -62,6 +62,7 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.password = Devise.friendly_token[0,20]
       user.email = auth.info.name
+      user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at) if auth.credentials.expires_at
       user.save(validate: false)
@@ -82,6 +83,14 @@ class User < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def create_profile
+    Profile.create(user_id: id, name: name)
+  end
+
+  def friends
+    self.followees(User)
   end
 
 end

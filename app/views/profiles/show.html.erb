@@ -1,14 +1,29 @@
+<div class='jumbotron'>
+	<div class='container'>
+		<h2><%= @profile.name %>'s Profile</h2>
+		<div class='profile-image-container'>
+			<img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/c27.0.160.160/p160x160/1926910_10205293718806437_7864120541088814139_n.jpg?oh=36e35144910e5b3b565bb2a0b720e5eb&oe=5562C128&__gda__=1429076126_563e839095c19c6b8c0bc336e611fb4c">
+		</div>
+		<br>
+		<% if current_user %>
+			<% if current_user.friends.include? @profile.user %>
+		  	<%= link_to "Following", '#', class: 'btn btn-default unfollow-link', data: { user_id: @profile.user.id } %>
+		  	<%= link_to "Follow", '#', class: 'btn btn-primary follow-link', style: 'display:none;', data: { user_id: @profile.user.id } %>
 
-<h1><%= @user.name %>'s Profile</h1>
+		  <% else %>
+		  	<%= link_to "Following", '#', class: 'btn btn-default unfollow-link', style: 'display:none;' , data: { user_id: @profile.user.id } %>
+		  	<%= link_to "Follow", '#', class: 'btn btn-primary follow-link', data: { user_id: @profile.user.id } %>
+		  <% end %>
+		<% else %>
+		  <%= link_to "Following", '#', class: 'btn btn-default unfollow-link', style: 'display:none;', data: { user_id: @profile.user.id } %>
 
-<% if current_user %>
-  <% if current_user.friends.include? @user %>
-    <%= link_to "Remove Friend", current_user.friendships.find_by_friend_id(@user.id), method: :delete %>
-  <% else %>
-    <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
-  <% end %>
-<% end %>
+		  <%= link_to "Follow", '#', class: 'btn btn-primary follow-link', data: { user_id: @profile.user.id } %>
+		<% end %>
 
-<h2>Recipes</h2>
 
-<%= render @user.recipes %>
+	</div>
+</div>
+<div class='container'>
+	<h2>Recipes</h2>
+	<%= render partial: 'recipes/recipes' %>
+</div>

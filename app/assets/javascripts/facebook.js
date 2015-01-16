@@ -28,8 +28,10 @@ function fblogin() {
   });
 }
 
-$(function() {
-  $('#facebook-sign-in').click(function() {
+
+$(document).ready(function(){
+  $('#facebook-sign-in').click(function(e) {
+    e.preventDefault();
     fblogin();
   });
 });

@@ -7,11 +7,11 @@
 		.col-md-8
 			#recipe_info
 				%h1= @recipe.title
-									
+
 				%p.description= @recipe.description
 				%p
-					.ratingshow 
-						%p Submitted by #{@recipe.user.name}
+					.ratingshow
+						%p= link_to @recipe.user.name, profile_path(@recipe.user.profile.id)
 						%p
 							%em= "#{@reviews.length} reviews"
 							<div class="star-rating" data-score= #{@avg_review} >

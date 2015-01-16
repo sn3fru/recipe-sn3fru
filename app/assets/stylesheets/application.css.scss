@@ -338,5 +338,20 @@ a.btn-twitter{
   margin-top: 15px;
 }
 
-
-
+.recipe-container{
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+}
+.recipe-container:hover{
+  border: solid 1px #A5A6AB;
+}
+.unfollow-link, follow-link{
+  margin-top: 10px;
+}
+.profile-image-container{
+  width: 180px;
+  background-color: white;
+  padding: 10px;
+}

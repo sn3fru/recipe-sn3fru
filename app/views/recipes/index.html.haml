@@ -10,27 +10,8 @@
 
 %hr.colorgraph
 %br
-
-
-
-
-.row	
-	- @recipe.each_slice(3) do |recipes|
-		- recipes.each do |recipe|
-			.col-sm-6.col-md-3
-				.recipe
-					.image_wrapper
-						.thumbail
-							= link_to recipe do
-								= image_tag recipe.image.url(:Medium)
-						= recipe.category.title
-						%h2= link_to recipe.title, recipe
-						
-						%a.btn.btn-primary{:href => "#" , :role => "button"} Ver Mais
-						%a.btn.btn-primary{:href => "#", :role => "button"} Curtir
-						%a.btn.btn-default{:href => "#", :role => "button"} Compartilhar
-
-
+.container
+	= render partial: 'recipes'
 
 :javascript
 	$('.star-rating').raty({

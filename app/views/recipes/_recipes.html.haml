@@ -1,0 +1,25 @@
+- @recipes.each_slice(3) do |recipe|
+	.row
+		- recipe.each do |r|
+			.col-md-3.recipe-container
+				%h2= link_to r.title, r
+				.recipe
+					.image_wrapper
+						.thumbail
+							= link_to r do
+								= image_tag r.image.url(:Medium)
+					= r.category.title if r.category
+				%p
+					= link_to 'Ver Mais', r, class: 'btn btn-primary'
+					- if current_user
+						- if r.liked_by?(current_user)
+							= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;', data: { user_id: r.user.id }
+							= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe'
+						- else
+							= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;'
+							= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe', data: { user_id: r.user.id }
+					- else
+						= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;'
+						= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe', data: { user_id: r.user.id }
+
+					%a.btn.btn-primary{:href => "#", :role => "button"} Compartilhar

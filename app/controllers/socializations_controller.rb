@@ -1,17 +1,52 @@
 class SocializationsController < ApplicationController
-  before_filter :load_socializable
+  #before_filter :load_socializable
 
   def follow
-    current_user.follow!(@socializable)
-    render json: {follow: true}
+    if current_user
+      user = User.where(id: params[:user_id]).first
+      current_user.follow!(user)
+      render json: { follow: true }
+    else
+      flash[:notice] = "Sign in before continue"
+      render json: { redirect: new_user_session_path }
+    end
   end
 
   def unfollow
-    current_user.unfollow! (@socializable)
-    render json: { follow: false}
+    if current_user
+      user = User.where(id: params[:user_id]).first
+      current_user.unfollow!(user)
+      render json: { unfollow: true}
+    else
+      flash[:notice] = "Sign in before continue"
+      render json: { redirect: new_user_session_path }
+    end
+  end
+
+  def recipe_like
+    if current_user
+      recipe = Recipe.where(id: params[:recipe_id]).first
+      current_user.like!(recipe)
+      render json: { like: true }
+    else
+      flash[:notice] = "Sign in before continue"
+      render json: { redirect: new_user_session_path }
+    end
+  end
+
+  def recipe_unlike
+    if current_user
+      recipe = Recipe.where(id: params[:recipe_id]).first
+      current_user.unlike!(recipe)
+      render json: { unlike: true}
+    else
+      flash[:notice] = "Sign in before continue"
+      render json: { redirect: new_user_session_path }
+    end
   end
 
   private
+
   def load_socializable
     @socializable =
         case

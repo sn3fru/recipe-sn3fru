@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-	devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } do
-		post 'follow',   to: 'socializations#follow'
-		post 'unfollow', to: 'socializations#unfollow'
-	end
+	devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+	post '/users/:user_id/follow', to: 'socializations#follow', as: 'user_follow'
+	post '/users/:user_id/unfollow', to: 'socializations#unfollow', as: 'user_unfollow'
 
   get 'activities/index'
 
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
 	resources :recipes do
 		resources :reviews, except: [:show, :index]
+		post 'like',   to: 'socializations#recipe_like'
+		post 'unlike', to: 'socializations#recipe_unlike'
 	end
 
 	root "recipes#index"
