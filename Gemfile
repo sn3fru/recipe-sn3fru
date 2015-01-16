@@ -32,6 +32,8 @@ gem "better_errors", group: :development
 gem 'byebug'
 gem 'bootstrap-social-rails', '~> 4.8.0'
 gem 'font-awesome-rails'
+gem 'binding_of_caller', group: :development
+# for command line in pag error
 
 group :development, :test do
   gem 'sqlite3'

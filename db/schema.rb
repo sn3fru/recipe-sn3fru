@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20150115145346) do
     t.string   "name"
     t.integer  "profile_id"
     t.integer  "TreeRecipe_id"
+    t.string   "avatar"
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"

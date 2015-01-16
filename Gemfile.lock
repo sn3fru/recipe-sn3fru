@@ -41,6 +41,8 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     bootstrap-social-rails (4.8.0)
@@ -69,6 +71,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.9.0)
+    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     devise (3.3.0)
       bcrypt (~> 3.0)
@@ -246,6 +249,7 @@ DEPENDENCIES
   ancestry
   aws-sdk (~> 1.20.0)
   better_errors
+  binding_of_caller
   bootstrap-sass (~> 3.2.0.2)
   bootstrap-social-rails (~> 4.8.0)
   byebug
