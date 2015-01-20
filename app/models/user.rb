@@ -88,4 +88,13 @@ class User < ActiveRecord::Base
     self.followees(User)
   end
 
+  def self.most_active_users
+    hash_user_cant = Recipe.group(:user_id).count.sort_by{ |k, v| v }.reverse.first(5)
+    users = []
+    hash_user_cant.each do |item|
+      users << item.first
+    end
+    where(id: users)
+  end
+
 end

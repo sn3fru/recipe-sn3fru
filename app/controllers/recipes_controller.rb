@@ -5,7 +5,8 @@ class RecipesController < ApplicationController
 
 	def index
 		@recipes = Recipe.all.order("created_at DESC")
-
+		@popular_recipes = Recipe.popular_recipes
+		@most_active_users = User.most_active_users
 		if @reviews.blank?
 			@avg_review = 0
 		else
