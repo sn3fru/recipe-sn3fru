@@ -1,0 +1,9 @@
+= simple_form_for :conversation, url: :conversations do |f|
+  = f.input :recipients, input_html: { class: 'form-control' }
+  = f.input :subject, input_html: { class: 'form-control' }
+  = f.input :body, input_html: { class: 'form-control' }, as: :text
+  %br
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = f.button :submit, 'Cancel', type: :reset, class: 'btn btn-danger'
+    = link_to'Back', conversations_path, class: 'btn btn-default'

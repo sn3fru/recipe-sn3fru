@@ -1,0 +1,10 @@
+= simple_form_for :message, url: reply_conversation_path(conversation) do |f|
+  .form-group
+    = f.input :subject, input_html: { class: 'form-control' }
+  .form-group
+    = f.input :body, input_html: { class: 'form-control' }
+  %br
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
+    = submit_tag 'Cancel', type: :reset, class: 'btn btn-danger'
+    = link_to'Back', conversations_path, class: 'btn btn-default'

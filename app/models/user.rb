@@ -29,11 +29,6 @@ class User < ActiveRecord::Base
          :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
-  #Mailer Methods
-  def name
-    email
-  end
-
   def mailboxer_email(object)
     email
   end

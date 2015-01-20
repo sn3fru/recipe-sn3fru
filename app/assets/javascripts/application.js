@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require cocoon
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
 
 
@@ -37,14 +38,14 @@ var height = movementStrength / $(window).height();
 var width = movementStrength / $(window).width();
 
 $("html").mousemove(function(e){
-	
+
 		  var pageX = e.pageX - ($(window).width() / 2);
 		  var pageY = e.pageY - ($(window).height() / 2);
 
 		  var newvalueX = width * pageX * -1;
 		  var newvalueY = height * pageY * -1;
 
-		  $('body').css("background-position", (50+newvalueX)+"% "+(50+newvalueY)+"%"); 
+		  $('body').css("background-position", (50+newvalueX)+"% "+(50+newvalueY)+"%");
 });
 
 function loadstatus(frame){
@@ -59,26 +60,26 @@ $(document).ready(function(){
         $toggleSidebar = $('.toggleSidebar'),
         $sidebar = $('.sidebar'),
         sidebarToggled = false;
-    
+
     var m = false,
         u = false,
         z = false;
-    
+
     setTimeout(function(){
         $('#pictureframe').hide();
     },3400);
-    
+
     $('body').keypress(function( event ) {
         if(event.which === 109) m = true;
-        if(event.which === 117) u = true;   
-        if(event.which === 122) z = true;   
-        if (m && u && z) alert('give me coffee money!');   
+        if(event.which === 117) u = true;
+        if(event.which === 122) z = true;
+        if (m && u && z) alert('give me coffee money!');
     });
-        
+
     setInterval(function(){
         $('.hireme').toggleClass('animated bounce');
     }, 3000);
-    
+
     $toggleSidebar.click(function(){
         if(!sidebarToggled){
             $sidebar.addClass('animated bounceOutLeft');
@@ -94,33 +95,33 @@ $(document).ready(function(){
             $sidebar.removeClass('animated bounceOutLeft');
             $sidebar.addClass('animated bounceInleft');
         }
-        
+
     });
-    
+
     (function(){
         $('.loading').hide();
         $('.sidebar').addClass('animated bounceInLeft');
         $('.toggleSidebar').addClass('animated bounceInLeft');
         $('.tipjar').addClass('animated bounceInRight');
     })();
-    
+
     $('.screenestate').find('.window').hide();
 
-    $('.draggable').draggable({
+    /*$('.draggable').draggable({
         containment: '.screenestate',
         handle: $(this).find('.menu')
     }).resizable();
-    
+    */
     $('.sidebar ul li').click(function(){
         if($(this).has('ul')){
             if($(this).find('ul').css('height') === '0px'){
-                $(this).find('ul').css('height', 'auto');   
+                $(this).find('ul').css('height', 'auto');
             }else{
                 $(this).find('ul').css('height', '0');
             }
         }
     });
-    
+
     $('.sidebar ul li ul li').click(function(){
         windowIterate+=20;
         var link = $(this).find('a').attr('data-link');
@@ -148,5 +149,5 @@ $(document).ready(function(){
             .find('.subloader')
             .show();
     });
-        
+
 });

@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
 	$('.like-recipe').click(function(){
-		var user_id = $(this).data('user-id');
+		var recipe_id = $(this).data('recipe-id');
 		$.ajax({
-  		url: "/recipes/"+user_id+"/like",
+  		url: "/recipes/"+recipe_id+"/like",
   		type: "POST",
   		success: function(data){
   			if (data.like) {
-  				$('.like-recipe').toggle();
-  				$('.unlike-recipe').toggle();
+  				$('#like-recipe-'+recipe_id).toggle();
+  				$('#unlike-recipe-'+recipe_id).toggle();
 		    }else{
 		    	location.href = '/users/sign_in'
 		    }
@@ -17,15 +17,14 @@ $(document).ready(function(){
 	});
 
 	$('.unlike-recipe').click(function(){
-		var user_id = $(this).data('user-id');
+		var recipe_id = $(this).data('recipe-id');
 		$.ajax({
-  		url: "/recipes/"+user_id+"/unlike",
+  		url: "/recipes/"+recipe_id+"/unlike",
   		type: "POST",
   		success: function(data){
   			if (data.unlike) {
-  				$('.unlike-recipe').toggle();
-  				$('.like-recipe').toggle();
-
+  				$('#unlike-recipe-'+recipe_id).toggle();
+  				$('#like-recipe-'+recipe_id).toggle();
 		    }else{
 		    	location.href = '/users/sign_in'
 		    }

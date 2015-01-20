@@ -1,0 +1,21 @@
+%h1 Conversations
+%h2 Inbox
+%table.table.table-striped
+  %thead
+    %th= 'Subject'
+    %th= ''
+  = render collection: mailbox.inbox, partial: 'conversation'
+%h2 Sentbox
+%table.table.table-striped
+  %thead
+    %th= 'Subject'
+    %th= ''
+  = render collection: mailbox.sentbox, partial: 'conversation'
+%h2 Trash
+%table.table.table-striped
+  %thead
+    %th= 'Subject'
+    %th= ''
+  = render collection: mailbox.trash, partial: 'conversation'
+
+= link_to 'Start Conversation', :new_conversation, class: 'btn btn-primary'

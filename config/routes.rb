@@ -24,6 +24,14 @@ Rails.application.routes.draw do
 		post 'unlike', to: 'socializations#recipe_unlike'
 	end
 
+	resources :conversations, only: [:index, :show, :new, :create] do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
+
 	root "recipes#index"
 
 end

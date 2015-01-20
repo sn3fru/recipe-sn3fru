@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115145346) do
+ActiveRecord::Schema.define(version: 20150119190017) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -51,12 +51,6 @@ ActiveRecord::Schema.define(version: 20150115145346) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-
-  create_table "conversations", force: true do |t|
-    t.string   "subject",    default: ""
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
 
   create_table "directions", force: true do |t|
     t.text     "step"
@@ -108,18 +102,22 @@ ActiveRecord::Schema.define(version: 20150115145346) do
   add_index "likes", ["likeable_id", "likeable_type"], name: "fk_likeables"
   add_index "likes", ["liker_id", "liker_type"], name: "fk_likes"
 
-  create_table "mentions", force: true do |t|
-    t.string   "mentioner_type"
-    t.integer  "mentioner_id"
-    t.string   "mentionable_type"
-    t.integer  "mentionable_id"
-    t.datetime "created_at"
+  create_table "mailboxer_conversation_opt_outs", force: true do |t|
+    t.integer "unsubscriber_id"
+    t.string  "unsubscriber_type"
+    t.integer "conversation_id"
   end
 
-  add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
-  add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
+  add_index "mailboxer_conversation_opt_outs", ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
+  add_index "mailboxer_conversation_opt_outs", ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
 
-  create_table "notifications", force: true do |t|
+  create_table "mailboxer_conversations", force: true do |t|
+    t.string   "subject",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "mailboxer_notifications", force: true do |t|
     t.string   "type"
     t.text     "body"
     t.string   "subject",              default: ""
@@ -137,7 +135,36 @@ ActiveRecord::Schema.define(version: 20150115145346) do
     t.datetime "expires"
   end
 
-  add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
+  add_index "mailboxer_notifications", ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
+  add_index "mailboxer_notifications", ["type"], name: "index_mailboxer_notifications_on_type"
+
+  create_table "mailboxer_receipts", force: true do |t|
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.integer  "notification_id",                            null: false
+    t.boolean  "is_read",                    default: false
+    t.boolean  "trashed",                    default: false
+    t.boolean  "deleted",                    default: false
+    t.string   "mailbox_type",    limit: 25
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
+  add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+
+  create_table "mentions", force: true do |t|
+    t.string   "mentioner_type"
+    t.integer  "mentioner_id"
+    t.string   "mentionable_type"
+    t.integer  "mentionable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "mentions", ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
+  add_index "mentions", ["mentioner_id", "mentioner_type"], name: "fk_mentions"
 
   create_table "posts", force: true do |t|
     t.string   "title"
@@ -161,20 +188,6 @@ ActiveRecord::Schema.define(version: 20150115145346) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
-
-  create_table "receipts", force: true do |t|
-    t.integer  "receiver_id"
-    t.string   "receiver_type"
-    t.integer  "notification_id",                            null: false
-    t.boolean  "is_read",                    default: false
-    t.boolean  "trashed",                    default: false
-    t.boolean  "deleted",                    default: false
-    t.string   "mailbox_type",    limit: 25
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-  end
-
-  add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id"
 
   create_table "recipes", force: true do |t|
     t.string   "title"
@@ -222,7 +235,6 @@ ActiveRecord::Schema.define(version: 20150115145346) do
     t.string   "name"
     t.integer  "profile_id"
     t.integer  "TreeRecipe_id"
-    t.string   "avatar"
     t.string   "provider"
     t.string   "uid"
     t.string   "oauth_token"

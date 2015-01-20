@@ -13,13 +13,13 @@
 					= link_to 'Ver Mais', r, class: 'btn btn-primary'
 					- if current_user
 						- if r.liked_by?(current_user)
-							= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;', data: { user_id: r.user.id }
-							= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe'
+							= link_to 'Like', 'javascript:void(0)', id: "like-recipe-#{r.id}", class: 'btn btn-primary like-recipe', data: { recipe_id: r.id }, style: 'display:none;'
+							= link_to 'Unlike', 'javascript:void(0)', id: "unlike-recipe-#{r.id}", class: 'btn btn-primary unlike-recipe', data: { recipe_id: r.id }
 						- else
-							= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;'
-							= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe', data: { user_id: r.user.id }
+							= link_to 'Like', 'javascript:void(0)', id: "like-recipe-#{r.id}", class: 'btn btn-primary like-recipe', data: { recipe_id: r.id }
+							= link_to 'Unlike', 'javascript:void(0)', id: "unlike-recipe-#{r.id}", class: 'btn btn-primary unlike-recipe', data: { recipe_id: r.id }, style: 'display:none;'
 					- else
-						= link_to 'Like', 'javascript:void(0)', class: 'btn btn-primary like-recipe', data: { user_id: r.user.id }, style: 'display:none;'
-						= link_to 'Unlike', 'javascript:void(0)', class: 'btn btn-primary unlike-recipe', data: { user_id: r.user.id }
+						= link_to 'Like', 'javascript:void(0)', id: "like-recipe-#{r.id}", class: 'btn btn-primary like-recipe', data: { recipe_id: r.id }
+						= link_to 'Unlike', 'javascript:void(0)', id: "unlike-recipe-#{r.id}", class: 'btn btn-primary unlike-recipe', data: { recipe_id: r.id }, style: 'display:none;'
 
 					%a.btn.btn-primary{:href => "#", :role => "button"} Compartilhar
