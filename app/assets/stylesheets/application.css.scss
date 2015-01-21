@@ -356,3 +356,13 @@ a.btn-twitter{
   background-color: white;
   padding: 10px;
 }
+li.notifications{
+  a{
+    border-bottom: solid 1px #dad9d9;
+    height: 45px;
+    padding-top: 12px;
+  }
+  a.unread{
+    background: #e7e7e7;
+  }
+}

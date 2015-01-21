@@ -1,7 +1,7 @@
 class Recipe < ActiveRecord::Base
 
   include PublicActivity::Model
-    tracked
+
   belongs_to :user
   belongs_to :category
   belongs_to :tree_recipe

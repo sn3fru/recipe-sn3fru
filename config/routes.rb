@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 	post '/users/:user_id/unfollow', to: 'socializations#unfollow', as: 'user_unfollow'
 
   get 'activities/index'
+  get 'mark_notifications_as_read/:activity_id', to: 'socializations#mark_notifications_as_read', as: 'mark_notifications_as_read'
 
   resources :posts
 

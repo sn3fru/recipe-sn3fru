@@ -17,8 +17,19 @@
             %li
               = link_to 'Profile', profile_path(current_user.profile.id)
               = link_to 'Messages', conversations_path(current_user.profile.id)
+        %li.dropdown
+          = link_to '#', class: "dropdown-toggle", data: {toggle: "dropdown", role: "button", aria_expanded: "false" } do
+            = "Notification"
+            %span.caret
+          %ul.dropdown-menu{ role: "menu" }
+            %li.notifications
+              - @activities.each do |activity|
+                - link_class = activity.unread?(current_user) ? 'unread' : 'read'
+                = link_to mark_notifications_as_read_path(activity), class: link_class do
+                  = render_activity(activity)
         %li= link_to "New Recipe", new_recipe_path
         %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+
     - else
       %ul.nav.navbar-nav.navbar-right
         %li= link_to "Sign Up", new_user_registration_path

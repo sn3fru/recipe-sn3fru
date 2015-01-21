@@ -29,7 +29,7 @@ function fblogin() {
 }
 
 
-$(document).ready(function(){
+$(document).on("ready page:load", function(){
   $('#facebook-sign-in').click(function(e) {
     e.preventDefault();
     fblogin();

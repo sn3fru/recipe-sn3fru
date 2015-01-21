@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on("ready page:load", function(){
 
 	$('.follow-link').click(function(){
 		var user_id = $(this).data('user-id');

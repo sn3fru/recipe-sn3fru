@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on("ready page:load", function(){
 
 	$('.like-recipe').click(function(){
 		var recipe_id = $(this).data('recipe-id');

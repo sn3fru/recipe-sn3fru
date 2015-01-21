@@ -2,7 +2,8 @@
 	.row
 		- recipe.each do |r|
 			.col-md-3.recipe-container
-				%h2= link_to r.title, r
+				%b
+					= link_to r.title.capitalize, r
 				.recipe
 					.image_wrapper
 						.thumbail

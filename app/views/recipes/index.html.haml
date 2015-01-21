@@ -16,14 +16,4 @@
         return $(this).attr('data-score');
         }
     });
-.col-xs-6.col-sm-2.sidebar-offcanvas
-  %b
-    = "Most Active Users"
-  .list-group
-    - @most_active_users.each do |user|
-      = link_to "#{user.name} (#{user.recipes.count})", profile_path(user.profile.id), class: 'list-group-item'
-  %b
-    = "Most Popular Recipes"
-  .list-group
-    - @popular_recipes.each do |recipe|
-      = link_to "#{recipe.title} - #{recipe.likers(User).count} Likes", recipe_path(recipe), class: 'list-group-item'
+= render 'social_sidebar'

@@ -22,6 +22,7 @@ gem 'spring',        group: :development
 gem 'twitter-bootstrap-rails'
 gem 'socialization'
 gem 'public_activity'
+gem 'unread'
 gem 'mailboxer'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
