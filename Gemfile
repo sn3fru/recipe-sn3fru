@@ -34,6 +34,8 @@ gem 'byebug'
 gem 'bootstrap-social-rails', '~> 4.8.0'
 gem 'font-awesome-rails'
 gem 'binding_of_caller', group: :development
+gem 'friendly_id', '~> 5.1.0'
+
 # for command line in pag error
 
 group :development, :test do

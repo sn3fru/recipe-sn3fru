@@ -1,6 +1,8 @@
 class Recipe < ActiveRecord::Base
 
   include PublicActivity::Model
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   belongs_to :user
   belongs_to :category
